@@ -1,11 +1,12 @@
-﻿using MyChat.DAL.Models;
+﻿using MyChat.BLL.DTO;
+using MyChat.DAL.Models;
 using System.Security.Claims;
 
 namespace MyChat.BLL.Services
 {
     public interface IMessageService
     {
-        Task<IEnumerable<MessageModel>> GetAllMessagesAsync();
+        Task<IEnumerable<MessageDto>> GetAllMessagesAsync();
 
         Task<bool> AddMessageAsync(ClaimsPrincipal user, string message );
 

@@ -11,6 +11,8 @@ namespace MyChat.BLL.DTO
 
         public string SenderName { get; set; }
 
+        public string? UserId { get; set; }
+
         public DateTime Timestamp { get; set; }
     }
 }

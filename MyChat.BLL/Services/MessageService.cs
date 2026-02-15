@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MyChat.BLL.DTO;
 using MyChat.DAL.Models;
 using MyChat.DAL.Repositories;
 using System.Security.Claims;
@@ -14,9 +15,27 @@ namespace MyChat.BLL.Services
             _repo = repo;
             _userManager = userManager;
         }
-        public async Task<IEnumerable<MessageModel>> GetAllMessagesAsync()
+        public async Task<IEnumerable<MessageDto>> GetAllMessagesAsync()
         {
-            return await _repo.GetAllMessagesAsync();
+            var messages = await _repo.GetAllMessagesAsync();
+            var messageDtos = new List<MessageDto>();
+            //Mappa varje MessageModel till en MessageDto
+            foreach (var m in messages)
+            {
+                var dto = new MessageDto
+                {
+                    Id = m.Id,
+                    Content = m.Message,
+                    SenderName = m.Username,
+                    UserId = m.UserId,
+                    Timestamp = m.Date
+                };
+                
+                messageDtos.Add(dto);
+            }
+
+
+            return messageDtos;
         }
 
         public async Task<bool> AddMessageAsync(ClaimsPrincipal user, string message)
@@ -102,7 +121,7 @@ namespace MyChat.BLL.Services
             if (messages == null || !messages.Any())
             {
                 return false;
-            } 
+            }
 
             foreach (var message in messages)
             {

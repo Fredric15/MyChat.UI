@@ -19,8 +19,7 @@ namespace MyChat.UI.Pages.Users
             _messageService = messageService;
         }
 
-        public IdentityUser CurrentUser { get; set; }
-        public IEnumerable<MessageModel> AllMessages { get; set; }
+        public IEnumerable<MessageDto> AllMessages { get; set; }
 
         [BindProperty]
         public string MessageContent { get; set; } = string.Empty;

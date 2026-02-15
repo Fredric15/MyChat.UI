@@ -32,7 +32,7 @@
                                         @if (msg.UserId == null)
                                         {
                                             // Alternativ 1: Användaren är borttagen
-                                            <span>@msg.Username <span class="fst-italic text-muted small">(Borttaget konto)</span></span>
+                                            <span>@msg.SenderName <span class="fst-italic text-muted small">(Borttaget konto)</span></span>
                                         }
                                         else if (isMine)
                                         {
@@ -42,16 +42,15 @@
                                         else
                                         {
                                             // Alternativ 3: Det är någon annan
-                                            <span>@msg.Username</span>
+                                            <span>@msg.SenderName</span>
                                         }
 
                                     </span>
-                                    <span class="text-muted ms-1">@msg.Date.ToString("HH:mm")</span>
+                                    <span class="text-muted ms-1">@msg.Timestamp.ToString("HH:mm")</span>
                                 </div>
 
                                 <div class="msg-bubble @(isMine ? "msg-mine" : "msg-others")">
-                                    <p class="mb-0">@msg.Message</p>
-
+                                    <p class="mb-0">@msg.Content</p>
                                     @if (isMine)
                                     {
                                         <div class="text-end mt-1" style="opacity: 0.7;">
