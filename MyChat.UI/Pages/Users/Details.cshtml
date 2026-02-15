@@ -10,7 +10,7 @@
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white border-0 pt-4 text-center">
                     <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <span class="h2 mb-0">@Model.User.Identity!.Name</span>
+                        <span class="h2 mb-0">@Model.User.Identity!.Name.ToString().Substring(0, 1).ToUpper()</span>
                     </div>
                     <h3 class="fw-bold">Profilinställningar</h3>
                 </div>
