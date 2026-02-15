@@ -32,7 +32,7 @@ namespace MyChat.UI.Pages.Users
 
         public async Task OnGetAsync()
         {
-            //var user = await _userManager.GetUserAsync(User);
+            
 
         }
 
