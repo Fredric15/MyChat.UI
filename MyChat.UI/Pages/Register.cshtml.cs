@@ -16,12 +16,13 @@ namespace MyChat.UI.Pages
             _userManager = userManager;
         }
 
-        [BindProperty, Required]
+        [BindProperty, Required(ErrorMessage = "Användarnamn krävs.")]
         public string UserName { get; set; }
-        [BindProperty, Required]
+        [BindProperty, Required(ErrorMessage = "Lösenord krävs.")]
         public string Password { get; set; }
-        [BindProperty, Required]
+        [BindProperty, Required(ErrorMessage = "Bekräfta lösenord krävs.")]
         [Compare(nameof(Password), ErrorMessage = "Lösenord matchar ej.")]
+
         public string ConfirmPassword { get; set; } = string.Empty;
 
         public void OnGet()

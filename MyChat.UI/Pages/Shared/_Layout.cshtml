@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <header>
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">MyChat.UI</a>
@@ -53,6 +53,54 @@
                         </div>
                     }
 
+                </div>
+            </div>
+        </nav>
+    </header> *@
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm py-3">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary d-flex align-items-center" asp-page="/Index">
+                    <i class="bi bi-chat-dots-fill fs-4 me-2"></i>
+                    <span style="letter-spacing: -1px;">MyChat<span class="text-dark">.</span></span>
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            @if (!SignInManager.IsSignedIn(User))
+                            {
+                                <a class="nav-link text-dark fw-medium" asp-page="/Index">Hem</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark fw-medium" asp-page="/Users/Messages">Chatt</a>
+                            }
+                        </li>
+                    </ul>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <div class="d-flex align-items-center gap-3">
+                            <a asp-page="/Users/Details" class="text-decoration-none d-flex align-items-center text-dark">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2 shadow-sm" style="width: 32px; height: 32px; font-size: 0.8rem;">
+                                    @User.Identity?.Name?[0].ToString().ToUpper()
+                                </div>
+                                <span class="fw-medium small">@User.Identity?.Name</span>
+                            </a>
+
+                            <form method="post" asp-area="Identity" asp-page="/Users/Logout">
+                                <button type="submit" class="btn btn-outline-danger btn-sm d-flex align-items-center gap-2">
+                                    <i class="bi bi-box-arrow-right"></i> Logga ut
+                                </button>
+                            </form>
+                        </div>
+                    }
                 </div>
             </div>
         </nav>
