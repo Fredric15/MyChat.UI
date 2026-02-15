@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MyChat.BLL/MyChat.BLL.csproj" Id="c04ee618-4623-403e-858e-30fb38e7a05e" />
+  <Project Path="MyChat.DAL/MyChat.DAL.csproj" Id="2dffeeef-9cb1-40ac-b5b2-2f08e99961e7" />
+  <Project Path="MyChat.UI/MyChat.UI.csproj" />
+</Solution>

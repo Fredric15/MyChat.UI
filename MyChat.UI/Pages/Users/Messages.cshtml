@@ -1,0 +1,104 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@model MyChat.UI.Pages.Users.MessagesModel
+@inject UserManager<IdentityUser> _userManager;
+
+@{
+    ViewData["Title"] = "Chatt";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="chat-container shadow">
+
+                <div class="p-3 bg-white border-bottom d-flex justify-content-between align-items-center" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="mb-0 fw-bold text-primary">Global Chatt</h5>
+                    <span class="badge bg-light text-dark border">@Model.AllMessages?.Count() meddelanden</span>
+                </div>
+
+                <div class="message-feed d-flex flex-column">
+                    @if (Model.AllMessages != null && Model.AllMessages.Any())
+                    {
+                        @foreach (var msg in Model.AllMessages)
+                        {
+                            bool isMine = msg.UserId == _userManager.GetUserId(User);
+
+                            <div class="d-flex flex-column @(isMine ? "align-items-end" : "align-items-start") mb-3">
+
+                                <div class="mb-1 px-2" style="font-size: 0.75rem;">
+                                    <span class="fw-bold @(isMine ? "text-primary" : "text-secondary")">
+                                        @if (msg.UserId == null)
+                                        {
+                                            // Alternativ 1: Användaren är borttagen
+                                            <span>@msg.Username <span class="fst-italic text-muted small">(Borttaget konto)</span></span>
+                                        }
+                                        else if (isMine)
+                                        {
+                                            // Alternativ 2: Det är jag
+                                            <span>Du</span>
+                                        }
+                                        else
+                                        {
+                                            // Alternativ 3: Det är någon annan
+                                            <span>@msg.Username</span>
+                                        }
+
+                                    </span>
+                                    <span class="text-muted ms-1">@msg.Date.ToString("HH:mm")</span>
+                                </div>
+
+                                <div class="msg-bubble @(isMine ? "msg-mine" : "msg-others")">
+                                    <p class="mb-0">@msg.Message</p>
+
+                                    @if (isMine)
+                                    {
+                                        <div class="text-end mt-1" style="opacity: 0.7;">
+                                            <form method="post" asp-page-handler="Delete" asp-route-messageId="@msg.Id" class="d-inline">
+                                                <button type="submit" class="btn btn-link p-0 text-white text-decoration-none"
+                                                        style="font-size: 0.7rem;"
+                                                        onclick="return confirm('Ta bort?')">
+                                                    <i class="bi bi-trash"></i> Radera
+                                                </button>
+                                            </form>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-center my-5 text-muted">
+                            <i class="bi bi-chat-dots display-4 d-block mb-3"></i>
+                            <p>Inga meddelanden ännu. Bli den första att skriva!</p>
+                        </div>
+                    }
+                </div>
+
+                <div class="input-area">
+                    <form method="post">
+                        <div class="input-group">
+                            <input asp-for="MessageContent"
+                                   class="form-control form-control-lg border-0 bg-light"
+                                   placeholder="Skriv ett meddelande..."
+                                   autocomplete="off"
+                                   style="border-radius: 25px 0 0 25px; padding-left: 20px;">
+                            <button type="submit" class="btn btn-primary px-4" style="border-radius: 0 25px 25px 0;">
+                                <i class="bi bi-send-fill"></i> Skicka
+                            </button>
+                        </div>
+                        <span asp-validation-for="MessageContent" class="text-danger small mt-1 d-block ms-3"></span>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-page="/Index" class="text-muted text-decoration-none small"><i class="bi bi-arrow-left"></i> Tillbaka till start</a>
+            </div>
+
+        </div>
+    </div>
+</div>

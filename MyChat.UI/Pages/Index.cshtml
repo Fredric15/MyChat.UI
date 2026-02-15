@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div  class="text-center">
+    <h1 class="display-4">Welcome to MyChat!</h1>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="card shadow border-0 mt-5">
+                    <div class="card-body p-5">
+                        <h2 class="text-center fw-bold mb-4">Logga in</h2>
+
+                        <form method="post">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">ANVÄNDARNAMN</label>
+                                <input asp-for="UserName" class="form-control form-control-lg"/>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold">LÖSENORD</label>
+                                <input asp-for="Password" class="form-control form-control-lg" type="password" />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm mb-3">Logga in</button>
+                        </form>
+
+                        <hr />
+
+                        <div class="text-center mt-4">
+                            <p class="text-muted small mb-2">Har du inget konto?</p>
+                            <a asp-page="./Register" class="btn btn-outline-secondary w-100">Skapa nytt konto</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a asp-page="/Index" class="text-decoration-none small text-muted">← Tillbaka till hem</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+</div>
