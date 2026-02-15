@@ -2,49 +2,50 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 a {
-  color: #0077cc;
+    color: #0077cc;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
 
 /* site.css */
@@ -84,18 +85,67 @@ body {
     transition: color 0.2s ease;
 }
 
-    /* En liten diskret linje under länkarna vid hover */
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 5px;
-        left: 8px;
-        background-color: var(--bs-primary);
-        transition: width 0.3s ease;
+/* En liten diskret linje under länkarna vid hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 8px;
+    background-color: var(--bs-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 30%;
+}
+
+.msg-bubble {
+    max-width: 70%;
+    padding: 10px 16px;
+    border-radius: 20px; /* Gör alla bubblor runda */
+    margin-bottom: 4px;
+    position: relative;
+}
+
+/* Dina egna meddelanden (höger) */
+.msg-mine {
+    background-color: #007bff; /* Snyggare blå färg */
+    color: white;
+    border-bottom-right-radius: 4px; /* "Spets" nertill höger */
+}
+
+/* Andras meddelanden (vänster) */
+.msg-others {
+    background-color: #f1f0f0; /* Ljusgrå */
+    color: #333;
+    border-bottom-left-radius: 4px; /* "Spets" nertill vänster */
+}
+
+.chat-input-container {
+    background: white;
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+    border-radius: 0 0 15px 15px; /* Matchar din card-border */
+}
+
+    .chat-input-container input {
+        border-radius: 25px; /* Runda hörn på inputfältet */
+        padding-left: 20px;
+        border: 1px solid #ced4da;
     }
 
-    .nav-link:hover::after {
-        width: 30%;
+    .chat-input-container .btn-send {
+        border-radius: 50%; /* Rund skicka-knapp */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
+.msg-bubble {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* Resten av din styling... */
+}

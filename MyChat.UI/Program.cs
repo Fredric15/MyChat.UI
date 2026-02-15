@@ -11,6 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Users");
+});
+
 builder.Services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("UserConnection")));
 
@@ -35,7 +40,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Index";
     options.LogoutPath = "/Index";
-    options.AccessDeniedPath = "/Index";
+    options.AccessDeniedPath = "/";
 });
 
 
