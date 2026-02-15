@@ -13,9 +13,9 @@ namespace MyChat.UI.Pages
         {
             _signInManager = signInManager;
         }
-        [BindProperty, Required]
+        [BindProperty, Required(ErrorMessage = "Användarnamn krävs.")]
         public string UserName { get; set; }
-        [BindProperty, Required]
+        [BindProperty, Required(ErrorMessage = "Lösenord krävs.")]
         public string Password { get; set; }
         public void OnGet()
         {
@@ -27,6 +27,8 @@ namespace MyChat.UI.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
