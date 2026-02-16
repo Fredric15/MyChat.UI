@@ -4,62 +4,6 @@
     ViewData["Title"] = "Home page";
 }
 
-@* <div  class="text-center">
-    <h1 class="display-4">Welcome to MyChat!</h1>
-
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success alert-dismissible fade show auto-expire" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i> @TempData["SuccessMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    }
-
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show auto-expire mt-3" role="alert">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["ErrorMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    }
-
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-5 col-lg-4">
-                <div class="card shadow border-0 mt-5">
-                    <div class="card-body p-5">
-                        <h2 class="text-center fw-bold mb-4">Logga in</h2>
-
-                        <form method="post">
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">ANVÄNDARNAMN</label>
-                                <input asp-for="UserName" class="form-control form-control-lg"/>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label small fw-bold">LÖSENORD</label>
-                                <input asp-for="Password" class="form-control form-control-lg" type="password" />
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm mb-3">Logga in</button>
-                        </form>
-
-                        <hr />
-
-                        <div class="text-center mt-4">
-                            <p class="text-muted small mb-2">Har du inget konto?</p>
-                            <a asp-page="./Register" class="btn btn-outline-secondary w-100">Skapa nytt konto</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-3">
-                    <a asp-page="/Index" class="text-decoration-none small text-muted">← Tillbaka till hem</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> *@
-
 <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 85vh;">
 
     @if (TempData["SuccessMessage"] != null)
@@ -79,23 +23,39 @@
         <h3 class="text-center fw-bold mb-4">Logga in</h3>
 
         <form method="post">
-            <div class="form-group mb-3">
-                <label class="form-label small fw-bold text-muted">ANVÄNDARNAMN</label>
-                <div class="input-group">
-                    <span class="input-group-text bg-light border-0"><i class="bi bi-person text-primary"></i></span>
-                    <input asp-for="UserName" type="text" class="form-control bg-light border-0 py-2" placeholder="Skriv ditt namn..." />
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-muted text-uppercase">Användarnamn</label>
+                <div class="input-group border rounded-3 overflow-hidden shadow-sm bg-white">
+                    <span class="input-group-text bg-transparent border-0 pe-0">
+                        <i class="bi bi-person text-primary"></i>
+                    </span>
+
+                    <input asp-for="UserName" class="form-control border-0 shadow-none py-2" placeholder="Skriv ditt namn..." />
+
+                    <span class="input-group-text bg-transparent border-0 ps-0" style="visibility: hidden;">
+                        <button class="btn p-0 pe-2"><i class="bi bi-eye"></i></button>
+                    </span>
                 </div>
-                <span asp-validation-for="UserName" class="text-danger small m-3"></span>
+                <span asp-validation-for="UserName" class="text-danger small"></span>
             </div>
 
-            <div class="form-group mb-4">
+            <div class="mb-3">
                 <label class="form-label small fw-bold text-muted">LÖSENORD</label>
-                <div class="input-group">
-                    <span class="input-group-text bg-light border-0"><i class="bi bi-lock text-primary"></i></span>
-                    <input asp-for="Password" type="password" class="form-control bg-light border-0 py-2" placeholder="Ditt lösenord..." />
+                <div class="input-group border rounded-3 overflow-hidden shadow-sm bg-white">
+                    <span class="input-group-text bg-transparent border-0 pe-0">
+                        <i class="bi bi-lock text-primary"></i>
+                    </span>
+
+                    <input asp-for="Password" type="password" class="form-control border-0 shadow-none py-2" placeholder="Ditt lösenord..." />
+
+                    <span class="input-group-text bg-transparent border-0 ps-0">
+                        <button class="btn border-0 bg-transparent password-toggle-btn text-muted shadow-none p-0 pe-2" type="button">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </span>
                 </div>
-                <span asp-validation-for="Password" class="text-danger small m-3"></span>
-                <div asp-validation-summary="ModelOnly" class="text-danger small m-3"></div>
+                <span asp-validation-for="Password" class="text-danger small"></span>
             </div>
 
             <div class="d-grid gap-2">
