@@ -102,10 +102,7 @@ namespace MyChat.UI.Pages.Users
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, CurrentPassword, NewPassword);
             if (!changePasswordResult.Succeeded)
             {
-                foreach (var error in changePasswordResult.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                ModelState.AddModelError(string.Empty, "Felaktigt nuvarande lösenord.");
                 return Page();
             }
             else

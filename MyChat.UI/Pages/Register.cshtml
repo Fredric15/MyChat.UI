@@ -15,21 +15,42 @@
                     <form method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
 
+
+
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Användarnamn</label>
-                            <input asp-for="UserName" class="form-control form-control-lg" placeholder="Användarnamn" />
+                            <label class="form-label small fw-bold text-muted">Användarnamn</label>
+                            <div class="input-group custom-password-group">
+                                <input asp-for="UserName" type="text" class="form-control border-end-0 pwd-input" placeholder="Användarnamn" />
+                                <span class="input-group-text bg-white border-start-0"></span>
+                            </div>
                             <span asp-validation-for="UserName" class="text-danger small"></span>
                         </div>
                         
+
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">LÖSENORD</label>
-                            <input asp-for="Password" class="form-control form-control-lg" type="password" />
+                            <label class="form-label small fw-bold text-muted">NYTT LÖSENORD</label>
+                            <div class="input-group custom-password-group">
+                                <input asp-for="Password" type="password" class="form-control border-end-0 pwd-input" placeholder="Välj ett starkt lösenord" />
+                                <span class="input-group-text bg-white border-start-0">
+                                    <button class="btn btn-link p-0 text-muted password-toggle-btn shadow-none" type="button">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </span>
+                            </div>
                             <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label small fw-bold">BEKRÄFTA LÖSENORD</label>
-                            <input asp-for="ConfirmPassword" class="form-control form-control-lg" type="password" />
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">BEKRÄFTA LÖSENORD</label>
+                            <div class="input-group custom-password-group">
+                                <input asp-for="ConfirmPassword" type="password" class="form-control border-end-0 pwd-input" placeholder="Bekräfta ditt lösenord" />
+                                <span class="input-group-text bg-white border-start-0">
+                                    <button class="btn btn-link p-0 text-muted password-toggle-btn shadow-none" type="button">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </span>
+                            </div>
                             <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                         </div>
 
