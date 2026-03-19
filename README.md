@@ -25,6 +25,7 @@ Lösningen är uppdelad i tre huvudsakliga projekt:
 
 * **Språk:** C#
 * **Ramverk:** .NET / ASP.NET Core Razor Pages
+* **Databas:** Microsoft SQL Server
 * **ORM:** Entity Framework Core
 * **Frontend:** HTML, CSS, JavaScript, Bootstrap
 
